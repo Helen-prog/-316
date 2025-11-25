@@ -107,10 +107,35 @@ public class Main {
 //        String res = String.join("C++", words);
 //        System.out.println(res);
 
-        String text = "Я изучаю Java. Мне нравится Java.";
-        text = text.replace("Java", "C++");
-        System.out.println(text);
+//        String text = "Я изучаю Java. Мне нравится Java.";
+//        text = text.replace("Java", "C++");
+//        System.out.println(text);
 
+//        String s1 = "Hello";
+//        String s2 = "Hello";
+//        String s3 = "Good-bye";
+//        String s4 = "HELLO";
+//        System.out.println(STR."\{s1} == \{s2} => \{s1.equals(s2)}");
+//        System.out.println(STR."\{s1} == \{s3} => \{s1.equals(s3)}");
+//        System.out.println(STR."\{s1} == \{s4} => \{s1.equals(s4)}");
+//        System.out.println(STR."\{s1} == (IgnoreCase) \{s4} => \{s1.equalsIgnoreCase(s4)}");
+
+//        String str = "I learning Java";
+//        System.out.println(str.endsWith("Java"));
+//        System.out.println(str.startsWith("I"));
+//        System.out.println(str.contains("ing"));
+//        System.out.println(str.codePointAt(0));
+//        System.out.println(str.codePointAt(3));
+//        System.out.println(str.codePointBefore(3));
+
+//        String s;
+
+//        double d = 3.7894;
+//        int d = -3456;
+//        char d = '+';
+//        boolean d = true;
+//        s = String.valueOf(d);
+//        System.out.println(s);
     }
 
     public static String reverseString(String str) {
