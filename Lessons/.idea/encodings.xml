@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/src/lesson_7/base/Base.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/lesson_7/base/Line.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/lesson_7/base/Rectangle.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/lesson_7/base/Triangle.java" charset="UTF-8" />
   </component>
 </project>
