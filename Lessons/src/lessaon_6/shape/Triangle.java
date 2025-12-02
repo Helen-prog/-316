@@ -28,6 +28,7 @@ public class Triangle extends Shape {
     public void draw() {
         for (int i = 0; i < side; i++) {
             for (int j = i; j < side; j++) {
+
                 System.out.print("  ");
             }
             for (int j = 0; j <= i; j++) {
