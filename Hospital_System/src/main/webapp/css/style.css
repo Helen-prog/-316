@@ -73,5 +73,110 @@
 h2{
     text-align: center;
     padding-bottom: 40px;
+    padding-top: 40px;
 }
 
+/* team */
+.team{
+    margin: 60px 0;
+    border-top: 1px solid #999;
+}
+
+.team h2{
+    padding-top: 60px;
+}
+
+.team__block{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.team__element{
+    flex-basis: 24%;
+    box-shadow: 0 0 6px 2px #005577;
+}
+
+.team__element img{
+    width: 100%;
+}
+
+.team__element h3, .team__element p{
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+footer{
+    background: #005577;
+    color: #FFF;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 30px 0 10px;
+}
+
+.height{
+    min-height: calc(100% - 64px - 80px - 100px);
+}
+
+.form{
+    width: 600px;
+    margin: 100px auto;
+}
+
+.button{
+    background: #99ccdd !important;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.center{
+    text-align: center;
+}
+
+.menu button{
+    border: 0;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.menu button:hover{
+    color: #00ddff;
+}
+
+.dropdown-menu a{
+    color: #000;
+}
+
+.dropdown-menu a:hover{
+    background: #00ddff;
+    color: #005577;
+}
+
+.admin__block{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.admin__element{
+    flex-basis: 24%;
+    box-shadow: 0 0 6px 2px #005577;
+    padding: 30px;
+}
+
+.admin__element img{
+    width: 100%;
+}
+
+.admin__element h3, .admin__element p{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.admin__element h3{
+    margin-top: 16px;
+}
+.admin__element p{
+    font-size: 24px;
+}
