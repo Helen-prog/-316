@@ -17,7 +17,7 @@ public class UserDao {
     public boolean register(User user) {
         boolean flag = false;
 
-        try{
+        try {
             String sql = "insert into user_dtls(full_name, email, password) values(?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, user.getName());
@@ -36,7 +36,7 @@ public class UserDao {
     public User login(String email, String password) {
         User user = null;
 
-        try{
+        try {
             String sql = "select * from user_dtls where email = ? and password = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, email);
@@ -54,5 +54,43 @@ public class UserDao {
             e.printStackTrace();
         }
         return user;
+    }
+
+    public boolean checkOldPassword(int userId, String oldPassword) {
+        boolean flag = false;
+
+        try {
+            String sql = "select * from user_dtls where id = ? and password = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, userId);
+            ps.setString(2, oldPassword);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                flag = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return flag;
+    }
+
+    public boolean changePassword(int userId, String newPassword) {
+        boolean flag = false;
+
+        try {
+            String sql = "update user_dtls set password = ? where id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, newPassword);
+            ps.setInt(2, userId);
+            int row = ps.executeUpdate();
+            if (row == 1) {
+                flag = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return flag;
     }
 }

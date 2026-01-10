@@ -1,4 +1,5 @@
-<%--
+<%@ page import="org.ee.jakarta.hospital_system.dao.DoctorDao" %>
+<%@ page import="org.ee.jakarta.hospital_system.db.DBConnect" %><%--
   Created by IntelliJ IDEA.
   User: Helen
   Date: 2025-12-25
@@ -30,26 +31,30 @@
                 <p class="center text-danger fs-3">${errorMsg}</p>
                 <c:remove var="errorMsg" scope="session" />
             </c:if>
+
+            <%
+                DoctorDao dao = new DoctorDao(DBConnect.getConn());
+            %>
             <div class="admin__block">
                 <div class="admin__element">
                     <img src="../img/admin_1.png" alt="">
                     <h3>Врачи</h3>
-                    <p>5</p>
+                    <p><%= dao.countDoctor() %></p>
                 </div>
                 <div class="admin__element">
                     <img src="../img/admin_2.png" alt="">
                     <h3>Пользователи</h3>
-                    <p>43</p>
+                    <p><%= dao.countUser() %></p>
                 </div>
                 <div class="admin__element">
                     <img src="../img/admin_3.png" alt="">
                     <h3>Назначение</h3>
-                    <p>456</p>
+                    <p><%= dao.countAppointment() %></p>
                 </div>
                 <div class="admin__element" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     <img src="../img/admin_4.png" alt="">
                     <h3>Специалист</h3>
-                    <p>34</p>
+                    <p><%= dao.countSpecialist() %></p>
                 </div>
             </div>
             <!-- Button trigger modal -->
@@ -62,15 +67,22 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Создание специалиста</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            ...
+                            <form action="../addSpecialist" method="post">
+                                <div class="form-group">
+                                    <label for="spec">Введите имя специалиста</label>
+                                    <input type="text" name="specName" class="form-control" id="spec">
+                                </div>
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-primary">Добавить</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
