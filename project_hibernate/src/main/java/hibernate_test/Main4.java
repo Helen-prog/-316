@@ -15,8 +15,11 @@ public class Main4 {
 //        Employee emp = session.get(Employee.class, 1);
 //        emp.setSalary(1500);
 
-        session.createQuery("update Employee set salary = 1000 where name = 'Игорь'").executeUpdate();
+//        session.createQuery("update Employee set salary = 1000 where name = 'Игорь'").executeUpdate();
 
+//        session.remove(emp);
+
+        session.createQuery("delete from Employee where name='Игорь'").executeUpdate();
         session.getTransaction().commit();
 
         factory.close();

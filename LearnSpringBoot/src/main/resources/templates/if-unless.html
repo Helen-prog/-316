@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text = "${user.name}"></td>
+        <td th:text = "${user.email}"></td>
+        <td th:text = "${user.role}"></td>
+        <td>
+            <a href="@{/update}" th:if="${user.role} == 'ADMIN'">Update</a>
+            <a href="@{/delet}" th:if="${user.role} == 'ADMIN'">Delete</a>
+            <a href="@{/view}" th:unless="${user.role} == 'ADMIN'">View</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
