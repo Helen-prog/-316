@@ -3,20 +3,51 @@ package org.springsecurity.registerloginsecurity.controller;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springsecurity.registerloginsecurity.entity.Category;
+import org.springsecurity.registerloginsecurity.entity.Post;
 import org.springsecurity.registerloginsecurity.entity.User;
+import org.springsecurity.registerloginsecurity.repository.UserRepo;
+import org.springsecurity.registerloginsecurity.service.ICategoryService;
+import org.springsecurity.registerloginsecurity.service.IPostService;
 import org.springsecurity.registerloginsecurity.service.UserService;
+
+import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class HomeController {
 
     @Autowired
+    private ICategoryService categoryService;
+
+    @Autowired
+    private IPostService postService;
+
+    @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRepo userRepo;
+
+    @ModelAttribute
+    public void commonUser(Principal principal, Model model) {
+        if(principal != null) {
+            String email = principal.getName();
+            User user = userRepo.findByEmail(email);
+            model.addAttribute("user", user);
+        }
+    }
+
     @GetMapping("/")
-    public String index() {
+    public String index(Model model, @RequestParam(value = "category", defaultValue = "") String category) {
+        List<Category> categories = categoryService.getAllCategory();
+        model.addAttribute("categories", categories);
+
+        List<Post> posts = postService.getAllSelectPosts(category);
+        model.addAttribute("posts", posts);
+        model.addAttribute("paramValue", category);
         return "index";
     }
 
@@ -30,10 +61,7 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping("/user/profile")
-    public String profile() {
-        return "profile";
-    }
+
 
     @GetMapping("/user/home")
     public String home() {
@@ -52,5 +80,12 @@ public class HomeController {
             session.setAttribute("msg", "Register failed");
         }
         return "redirect:/register";
+    }
+
+    @GetMapping("/item/{id}")
+    public String item(@PathVariable int id, Model model) {
+        Post postById = postService.getPostById(id);
+        model.addAttribute("post", postById);
+        return "view_item";
     }
 }

@@ -6,7 +6,59 @@
 </head>
 <body>
 <section>
-<h1>Index Page</h1>
+    <div class="container-fluid bg-secondary p-3">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="ch">
+                        <button class="btn btn-light text-dark ms-3">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-1">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="card shadow-sm p3 mb-5 bg-body-tertiary rounded">
+                    <div class="card-body">
+                        <div class="list-group">
+                            <p class="fs-5">Категории</p>
+                            <a href="/" class="list-group-item list-group-item-action" th:classappend="${paramValue == ''} ? 'active' : ''" aria-current="true">Все</a>
+                            <a th:href="@{'?category='+${c.name}}" th:each="c : ${categories}" th:text="${c.name}" class="list-group-item list-group-item-action" th:classappend="${paramValue == c.name} ? 'active' : ''" >Веб-программирование</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="card-body">
+                        <p class="fs-3 text-center">Блог</p>
+                        <div class="row">
+                            <th:block th:if="${posts.size > 0}">
+                                <div class="col-md-3 mb-3" th:each="p : ${posts}">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <img th:src="@{'/img/post_img/'+${p.image}}" alt="">
+                                            <p class="fs-5 text-center" th:text="${p.title}">Зачем требуется сайт для компании?</p>
+                                            <div class="row text-center">
+                                                <a th:href="@{'/item/'+${p.id}}" class="btn btn-secondary col-md-6 offset-md-3">Подробнее</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th:block>
+                            <th:block th:unless="${posts.size > 0}">
+                                <p class="fs-4 text-center mt-4 text-success">В этой категории нет постов</p>
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 </body>
 </html>
