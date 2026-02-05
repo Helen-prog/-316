@@ -180,43 +180,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startProgress" />
 
-    <com.google.android.material.chip.ChipGroup
-        android:layout_width="360dp"
-        android:layout_height="100dp"
-        app:chipSpacingHorizontal="30dp"
-        app:chipSpacingVertical="0dp"
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chip">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip2"
-            android:text="One"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip3"
-            android:text="Two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:chipSpacingHorizontal="30dp"
+                app:chipSpacingVertical="0dp">
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip4"
-            android:text="Three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="One" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip5"
-            android:text="Four"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Two" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip6"
-            android:text="Five"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.chip.ChipGroup>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Three" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Four" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Five" />
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+    </HorizontalScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

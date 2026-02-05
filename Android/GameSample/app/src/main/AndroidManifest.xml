@@ -10,13 +10,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PaletteApp">
+        android:theme="@style/Theme.GameSample">
         <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
+            android:name=".Level1"
+            android:exported="false"
+            android:screenOrientation="behind"
+            tools:ignore="DiscourageApi"/>
         <activity
-            android:name=".MainActivity2"
-            android:exported="true">
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="behind"
+            tools:ignore="DiscourageApi">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,11 +28,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".GameActivity"
+            android:exported="true"
+            android:screenOrientation="behind"
+            tools:ignore="DiscourageApi">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
