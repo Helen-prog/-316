@@ -16,18 +16,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Objects;
 import java.util.Random;
 
-public class Level1 extends AppCompatActivity {
+public class Level2 extends AppCompatActivity {
 
-    Dialog dialog, dialogEnd;
+    Dialog dialog;
 
     public int numLeft, numRight;
     Array array = new Array();
@@ -61,11 +57,17 @@ public class Level1 extends AppCompatActivity {
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         dialog.setCancelable(false);
 
+        ImageView previewImg = dialog.findViewById(R.id.imageView2);
+        previewImg.setImageResource(R.drawable.number_lev_two);
+
+        TextView textDescription = dialog.findViewById(R.id.text_description);
+        textDescription.setText(R.string.level_two);
+
         TextView buttonClose = dialog.findViewById(R.id.button_close);
         buttonClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Level1.this, GameActivity.class);
+                Intent intent = new Intent(Level2.this, GameActivity.class);
                 startActivity(intent);
                 dialog.dismiss();
             }
@@ -81,56 +83,27 @@ public class Level1 extends AppCompatActivity {
 
         dialog.show();
 
-        // ------------------------------
-        dialogEnd = new Dialog(this);
-        dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialogEnd.setContentView(R.layout.dialog_end);
-        Objects.requireNonNull(dialogEnd.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-        dialogEnd.setCancelable(false);
-
-        TextView buttonClose2 = dialogEnd.findViewById(R.id.button_close);
-        buttonClose2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Level1.this, GameActivity.class);
-                startActivity(intent);
-                dialogEnd.dismiss();
-            }
-        });
-
-        Button buttonContinue2 = dialogEnd.findViewById(R.id.button_continue);
-        buttonContinue2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Level1.this, Level2.class);
-                startActivity(intent);
-                dialogEnd.dismiss();
-            }
-        });
-
-
         Button buttonBack = findViewById(R.id.button_back_level);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Level1.this, GameActivity.class);
+                Intent intent = new Intent(Level2.this, GameActivity.class);
                 startActivity(intent);
             }
         });
 
-        final Animation animation = AnimationUtils.loadAnimation(Level1.this, R.anim.alpha);
+        final Animation animation = AnimationUtils.loadAnimation(Level2.this, R.anim.alpha);
 
         numLeft = random.nextInt(10);
-        imgLeft.setImageResource(array.images1[numLeft]);
-        textLeft.setText(array.text1[numLeft]);
+        imgLeft.setImageResource(array.images2[numLeft]);
+        textLeft.setText(array.text2[numLeft]);
 
         numRight = random.nextInt(10);
         while (numLeft == numRight) {
             numRight = random.nextInt(10);
         }
-        imgRight.setImageResource(array.images1[numRight]);
-        textRight.setText(array.text1[numRight]);
+        imgRight.setImageResource(array.images2[numRight]);
+        textRight.setText(array.text2[numRight]);
 
         final int[] progress = {R.id.point1, R.id.point2, R.id.point3, R.id.point4, R.id.point5, R.id.point6, R.id.point7, R.id.point8, R.id.point9, R.id.point10, R.id.point11, R.id.point12, R.id.point13, R.id.point14, R.id.point15, R.id.point16, R.id.point17, R.id.point18, R.id.point19, R.id.point20};
 
@@ -178,20 +151,19 @@ public class Level1 extends AppCompatActivity {
                     }
                     if (count == 20) {
                         // выход из уровня
-                        dialogEnd.show();
                     } else {
                         numLeft = random.nextInt(10);
-                        imgLeft.setImageResource(array.images1[numLeft]);
+                        imgLeft.setImageResource(array.images2[numLeft]);
                         imgLeft.startAnimation(animation);
-                        textLeft.setText(array.text1[numLeft]);
+                        textLeft.setText(array.text2[numLeft]);
 
                         numRight = random.nextInt(10);
                         while (numLeft == numRight) {
                             numRight = random.nextInt(10);
                         }
-                        imgRight.setImageResource(array.images1[numRight]);
+                        imgRight.setImageResource(array.images2[numRight]);
                         imgRight.startAnimation(animation);
-                        textRight.setText(array.text1[numRight]);
+                        textRight.setText(array.text2[numRight]);
                         imgRight.setEnabled(true);
                     }
 
@@ -244,20 +216,19 @@ public class Level1 extends AppCompatActivity {
                     }
                     if (count == 20) {
                         // выход из уровня
-                        dialogEnd.show();
                     } else {
                         numLeft = random.nextInt(10);
-                        imgLeft.setImageResource(array.images1[numLeft]);
+                        imgLeft.setImageResource(array.images2[numLeft]);
                         imgLeft.startAnimation(animation);
-                        textLeft.setText(array.text1[numLeft]);
+                        textLeft.setText(array.text2[numLeft]);
 
                         numRight = random.nextInt(10);
                         while (numLeft == numRight) {
                             numRight = random.nextInt(10);
                         }
-                        imgRight.setImageResource(array.images1[numRight]);
+                        imgRight.setImageResource(array.images2[numRight]);
                         imgRight.startAnimation(animation);
-                        textRight.setText(array.text1[numRight]);
+                        textRight.setText(array.text2[numRight]);
                         imgLeft.setEnabled(true);
                     }
 

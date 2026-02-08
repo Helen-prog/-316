@@ -39,6 +39,15 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        TextView textView2 = findViewById(R.id.textView2);
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GameActivity.this, Level2.class);
+                startActivity(intent);
+            }
+        });
+
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 }
