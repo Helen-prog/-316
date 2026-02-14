@@ -3,6 +3,7 @@ package com.example.gamesample;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ import java.util.Random;
 
 public class Level2 extends AppCompatActivity {
 
-    Dialog dialog;
+    Dialog dialog, dialogEnd;
 
     public int numLeft, numRight;
     Array array = new Array();
@@ -37,7 +38,7 @@ public class Level2 extends AppCompatActivity {
         setContentView(R.layout.universal);
 
         TextView textLevels = findViewById(R.id.text_levels);
-        textLevels.setText(R.string.level_1);
+        textLevels.setText(R.string.level_2);
 
         final ImageView imgLeft = findViewById(R.id.img_left);
         final ImageView imgRight = findViewById(R.id.img_right);
@@ -82,6 +83,40 @@ public class Level2 extends AppCompatActivity {
         });
 
         dialog.show();
+
+
+
+        dialogEnd = new Dialog(this);
+        dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogEnd.setContentView(R.layout.dialog_end);
+        Objects.requireNonNull(dialogEnd.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        dialogEnd.setCancelable(false);
+
+        TextView textDescriptionEnd = dialogEnd.findViewById(R.id.text_description_end);
+        textDescriptionEnd.setText(R.string.level_two_end);
+
+        TextView buttonClose2 = dialogEnd.findViewById(R.id.button_close);
+        buttonClose2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Level2.this, GameActivity.class);
+                startActivity(intent);
+                dialogEnd.dismiss();
+            }
+        });
+
+        Button buttonContinue2 = dialogEnd.findViewById(R.id.button_continue);
+        buttonContinue2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Level2.this, Level3.class);
+                startActivity(intent);
+                dialogEnd.dismiss();
+            }
+        });
+
+
 
         Button buttonBack = findViewById(R.id.button_back_level);
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +186,14 @@ public class Level2 extends AppCompatActivity {
                     }
                     if (count == 20) {
                         // выход из уровня
+                        SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
+                        final int level = save.getInt("Level", 2);
+                        if(level<=2){
+                            SharedPreferences.Editor editor = save.edit();
+                            editor.putInt("Level", 3);
+                            editor.apply();
+                        }
+                        dialogEnd.show();
                     } else {
                         numLeft = random.nextInt(10);
                         imgLeft.setImageResource(array.images2[numLeft]);
@@ -216,6 +259,14 @@ public class Level2 extends AppCompatActivity {
                     }
                     if (count == 20) {
                         // выход из уровня
+                        SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
+                        final int level = save.getInt("Level", 2);
+                        if(level<=2){
+                            SharedPreferences.Editor editor = save.edit();
+                            editor.putInt("Level", 3);
+                            editor.apply();
+                        }
+                        dialogEnd.show();
                     } else {
                         numLeft = random.nextInt(10);
                         imgLeft.setImageResource(array.images2[numLeft]);

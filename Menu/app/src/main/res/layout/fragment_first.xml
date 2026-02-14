@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FirstFragment">
+
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:layout_gravity="center"
+        android:layout_marginTop="120dp"
+        android:rating="2.5"
+        android:stepSize="0.25"
+        android:progressTint="@color/orange" />
+
+    <Button
+        android:id="@+id/ratingsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:paddingHorizontal="40dp"
+        android:textSize="20sp"
+        android:backgroundTint="@color/green"
+        android:text="Rating" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="?android:attr/listDivider" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/colors"
+        android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
+        android:layout_margin="20dp"/>
+
+    <Button
+        android:id="@+id/buttonFindDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_find_description"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/black"
+        android:layout_margin="20dp"
+        />
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:text="TextView" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="?android:attr/listDivider" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progressDrawable="@drawable/custom_seekbar"
+        android:thumb="@drawable/seekbar_thumb"
+        android:layout_margin="20dp"
+        android:max="100"
+        android:progress="0"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0/100"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="30sp"
+        android:layout_gravity="center" />
+
+</LinearLayout>
